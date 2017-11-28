@@ -14,3 +14,30 @@
 * Add.js  子组件1 添加功能
 * Del.js  子组件2 删除功能
 * Updata.js 子组件3 添加功能
+
+#### 功能分析
+
+* 英雄列表的显示
+* 英雄的添加
+* 英雄的更新
+* 英雄的删除
+
+### 模块的导出和引入 
+
+
+``` javascript
+  //模块导出 
+  export default{
+
+  }
+````
+
+````javascript
+  //模块引入
+  import Xx from "./Xx.js";
+````
+
+```` javascript
+  // 全局声明
+  Vue.component('vue-xx', Xx);
+````

@@ -10,8 +10,8 @@ export default {
     <hero-add :heros="heros"></hero-add>
     //修改英雄
     <hero-updata :heros="heros"></hero-updata>
-   <!--   //删除英雄
-    <hero-del :heros="heros"></hero-del> --> 
+  //删除英雄
+    <hero-del :heros="heros"></hero-del> 
   </div>  
   `,
   data() {

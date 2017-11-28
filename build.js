@@ -102,7 +102,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__List_js__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Add_js__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Updata_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Del_js__ = __webpack_require__(10);
 // 启动配置文件
+
 
 
 
@@ -114,6 +116,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-list',__WEBPACK_IMPORTED_MODULE_2__List_js__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-add', __WEBPACK_IMPORTED_MODULE_3__Add_js__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-updata', __WEBPACK_IMPORTED_MODULE_4__Updata_js__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-del', __WEBPACK_IMPORTED_MODULE_5__Del_js__["a" /* default */]);
 
 
 
@@ -11198,8 +11201,8 @@ process.umask = function() { return 0; };
     <hero-add :heros="heros"></hero-add>
     //修改英雄
     <hero-updata :heros="heros"></hero-updata>
-   <!--   //删除英雄
-    <hero-del :heros="heros"></hero-del> --> 
+  //删除英雄
+    <hero-del :heros="heros"></hero-del> 
   </div>  
   `,
   data() {
@@ -11321,6 +11324,42 @@ process.umask = function() { return 0; };
 
 
 
+});
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  template: `
+      <!--删除功能-->
+    <div :class=color>
+       ID:<input type="text" v-model="delId" />
+       <button @click="delHero(delId)">删除英雄</button>
+    </div>  
+  `,
+  props:["heros"],
+  data(){
+    return{
+      color:"g-y",
+      delId:"",
+      
+
+    }
+  },
+  methods:{
+    delHero(id){
+      // 找到要删除的索引
+      var index = this.heros.findIndex(ele => ele.id == id);
+      if (index == -1 ){
+        alert("没有找到该英雄");
+        return
+      }
+      // 删除
+      this.heros.splice(index,1);
+    }
+  }
 });
 
 /***/ })
