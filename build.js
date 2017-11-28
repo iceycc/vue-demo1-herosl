@@ -100,13 +100,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__List_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Add_js__ = __webpack_require__(8);
 // 启动配置文件
 
 
 
 
 
-__WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-list',__WEBPACK_IMPORTED_MODULE_2__List_js__["a" /* default */])
+
+
+__WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-list',__WEBPACK_IMPORTED_MODULE_2__List_js__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-add', __WEBPACK_IMPORTED_MODULE_3__Add_js__["a" /* default */])
 
 
 
@@ -11186,9 +11190,9 @@ process.umask = function() { return 0; };
     <hero-list :heros="heros"></hero-list>
 
     
-    <!-- //添加英雄
+   //添加英雄
     <hero-add></hero-add>
-    //修改英雄
+    <!--  //修改英雄
     <hero-updata></hero-updata>
     //删除英雄
     <hero-del></hero-del> --> 
@@ -11232,6 +11236,40 @@ process.umask = function() { return 0; };
   data() {
     return {
       color: 'red'
+    }
+  }
+});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  template: `
+      <div :class=color>
+         ID:<input type="text" v-model="addId" />
+         英雄名称: <input type="text" v-model="addName" />
+         <button @click="addHero">添加英雄</button>
+      </div>  
+  `,
+  data() {
+    return {
+      color: "y-g",
+      addId:"",
+      addName:"",
+    }
+  },
+  methods: {
+    // 添加英雄
+    addHero() {
+      this.heros.push({
+        id: this.addId,
+        name: this.addName
+      });
+      //清空添加
+      this.addId = '';
+      this.addName = '';
     }
   }
 });
