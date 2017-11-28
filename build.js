@@ -101,6 +101,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__List_js__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Add_js__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Updata_js__ = __webpack_require__(9);
 // 启动配置文件
 
 
@@ -109,8 +110,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
 __WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-list',__WEBPACK_IMPORTED_MODULE_2__List_js__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-add', __WEBPACK_IMPORTED_MODULE_3__Add_js__["a" /* default */])
+__WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-add', __WEBPACK_IMPORTED_MODULE_3__Add_js__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0__vue___default.a.component('hero-updata', __WEBPACK_IMPORTED_MODULE_4__Updata_js__["a" /* default */]);
+
 
 
 
@@ -11191,11 +11195,11 @@ process.umask = function() { return 0; };
 
     
    //添加英雄
-    <hero-add></hero-add>
-    <!--  //修改英雄
-    <hero-updata></hero-updata>
-    //删除英雄
-    <hero-del></hero-del> --> 
+    <hero-add :heros="heros"></hero-add>
+    //修改英雄
+    <hero-updata :heros="heros"></hero-updata>
+   <!--   //删除英雄
+    <hero-del :heros="heros"></hero-del> --> 
   </div>  
   `,
   data() {
@@ -11260,9 +11264,12 @@ process.umask = function() { return 0; };
       addName:"",
     }
   },
+  // 下面data中用到了heros 要在这里先从父组件那里拿到
+  props:["heros"],
   methods: {
     // 添加英雄
     addHero() {
+      // console.log(this.addId,this.addName)
       this.heros.push({
         id: this.addId,
         name: this.addName
@@ -11272,6 +11279,48 @@ process.umask = function() { return 0; };
       this.addName = '';
     }
   }
+});
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  template: `
+    <!--更改功能-->
+   <div :class=color>
+      ID:<input type="text" v-model="updateId" />
+      英雄名称: <input type="text" v-model="updateName" />
+      <button @click="updateHero">更新英雄</button>
+   </div>
+    `,
+    props:["heros"],
+    data(){
+      return {
+        updateId:"",
+        updateName:"",
+        color:"y-g",
+      }
+    },
+    methods:{
+      updateHero(){
+        // 获取跟新的id
+        var heros = this.heros.find(ele => ele.id = this.updateId);
+        if(!heros){
+          alert("没有找到该英雄");
+          return
+        }
+        // 修改当前的英雄名
+        heros.name = this.updateName;
+        // 清空添加
+        this.updateId = "";
+      }
+      
+    }
+
+
+
 });
 
 /***/ })

@@ -7,11 +7,11 @@ export default {
 
     
    //添加英雄
-    <hero-add></hero-add>
-    <!--  //修改英雄
-    <hero-updata></hero-updata>
-    //删除英雄
-    <hero-del></hero-del> --> 
+    <hero-add :heros="heros"></hero-add>
+    //修改英雄
+    <hero-updata :heros="heros"></hero-updata>
+   <!--   //删除英雄
+    <hero-del :heros="heros"></hero-del> --> 
   </div>  
   `,
   data() {

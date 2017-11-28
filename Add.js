@@ -13,9 +13,12 @@ export default {
       addName:"",
     }
   },
+  // 下面data中用到了heros 要在这里先从父组件那里拿到
+  props:["heros"],
   methods: {
     // 添加英雄
     addHero() {
+      // console.log(this.addId,this.addName)
       this.heros.push({
         id: this.addId,
         name: this.addName
